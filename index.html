@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Baby Shower Maxi 🦁</title>
+<title>Baby Shower Maximiliano 🦁</title>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -94,7 +94,26 @@ body { font-family: 'Lato', sans-serif; background: #111; overflow-x: hidden; }
 .enter-btn:hover { background:var(--green-mid); transform:scale(1.04); }
 .enter-hint { margin-top:0.8rem; font-size:0.72rem; color:rgba(45,80,22,0.45); letter-spacing:0.15em; }
 
-/* LEAF CORNERS */
+/* ECO PHOTO */
+.eco-frame {
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  border: 3px solid var(--gold-light);
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #f0f8f0, #e8f4e8);
+  box-shadow: 0 4px 24px rgba(61,122,26,0.15), 0 0 0 6px rgba(201,146,42,0.1);
+  margin: 0 auto 0.5rem;
+  animation: float 3s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.eco-frame img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: sepia(0.15) contrast(1.05);
+}
+
+
 .leaf-corner { position:absolute; pointer-events:none; z-index:2; }
 .lc-tl { top:0; left:0; }
 .lc-tr { top:0; right:0; transform:scaleX(-1); }
@@ -152,7 +171,7 @@ body { font-family: 'Lato', sans-serif; background: #111; overflow-x: hidden; }
 </head>
 <body>
 
-<audio id="bg-audio" loop src="song.mp3"></audio>
+<!-- <audio id="bg-audio" loop src="audio.mp3"></audio> -->
 <button id="audio-btn" onclick="toggleAudio()">🔊</button>
 
 <!-- WELCOME OVERLAY -->
@@ -162,14 +181,21 @@ body { font-family: 'Lato', sans-serif; background: #111; overflow-x: hidden; }
   <svg class="leaf-corner lc-bl" width="200" height="200" viewBox="0 0 180 180" fill="none"><ellipse cx="20" cy="20" rx="60" ry="22" fill="#4A8C28" opacity="0.75" transform="rotate(40 20 20)"/><ellipse cx="10" cy="50" rx="50" ry="16" fill="#3D7A1A" opacity="0.65" transform="rotate(20 10 50)"/><ellipse cx="50" cy="10" rx="55" ry="14" fill="#5AAB30" opacity="0.55" transform="rotate(55 50 10)"/><ellipse cx="0" cy="80" rx="45" ry="13" fill="#2D5016" opacity="0.6" transform="rotate(10 0 80)"/></svg>
   <svg class="leaf-corner lc-br" width="200" height="200" viewBox="0 0 180 180" fill="none"><ellipse cx="20" cy="20" rx="60" ry="22" fill="#4A8C28" opacity="0.75" transform="rotate(40 20 20)"/><ellipse cx="10" cy="50" rx="50" ry="16" fill="#3D7A1A" opacity="0.65" transform="rotate(20 10 50)"/><ellipse cx="50" cy="10" rx="55" ry="14" fill="#5AAB30" opacity="0.55" transform="rotate(55 50 10)"/><ellipse cx="0" cy="80" rx="45" ry="13" fill="#2D5016" opacity="0.6" transform="rotate(10 0 80)"/></svg>
   <div class="overlay-content">
-    <span class="overlay-simba">🦁</span>
+    <div class="eco-frame">
+    <img id="eco-img" src="eco.jpg" alt="Eco de Maximiliano"
+      onerror="this.style.display='none';document.getElementById('eco-placeholder').style.display='flex';">
+    <div id="eco-placeholder" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.4rem;">
+      <span style="font-size:2.5rem;">🤍</span>
+      <span style="font-size:0.7rem;letter-spacing:0.15em;color:var(--green-mid);text-transform:uppercase;">eco.jpg</span>
+    </div>
+  </div>
     <div class="overlay-invite-top">&#161;Tienes una invitaci&#243;n especial!</div>
     <div class="overlay-invite-sub">Samy &amp; Wlad te invitan a ser parte de uno de los momentos m&#225;s especiales de sus vidas</div>
     <div class="overlay-divider"></div>
     <div class="overlay-script">Mi</div>
     <div class="overlay-big">BABY</div>
     <span class="overlay-banner">SHOWER</span><br>
-    <span class="overlay-name">Maxi</span>
+    <span class="overlay-name">Maximiliano Moyano Rojas</span>
     <button class="enter-btn" onclick="enterSite()">&#10022; &nbsp;Ver mi invitaci&#243;n&nbsp; &#10022;</button>
     <p class="enter-hint">Toca para abrir con sonido</p>
   </div>
@@ -192,11 +218,18 @@ body { font-family: 'Lato', sans-serif; background: #111; overflow-x: hidden; }
     <svg class="leaf-corner lc-bl" width="200" height="200" viewBox="0 0 180 180" fill="none"><ellipse cx="20" cy="20" rx="60" ry="22" fill="#4A8C28" opacity="0.75" transform="rotate(40 20 20)"/><ellipse cx="10" cy="50" rx="50" ry="16" fill="#3D7A1A" opacity="0.65" transform="rotate(20 10 50)"/><ellipse cx="50" cy="10" rx="55" ry="14" fill="#5AAB30" opacity="0.55" transform="rotate(55 50 10)"/><ellipse cx="0" cy="80" rx="45" ry="13" fill="#2D5016" opacity="0.6" transform="rotate(10 0 80)"/></svg>
     <svg class="leaf-corner lc-br" width="200" height="200" viewBox="0 0 180 180" fill="none"><ellipse cx="20" cy="20" rx="60" ry="22" fill="#4A8C28" opacity="0.75" transform="rotate(40 20 20)"/><ellipse cx="10" cy="50" rx="50" ry="16" fill="#3D7A1A" opacity="0.65" transform="rotate(20 10 50)"/><ellipse cx="50" cy="10" rx="55" ry="14" fill="#5AAB30" opacity="0.55" transform="rotate(55 50 10)"/><ellipse cx="80" cy="0" rx="40" ry="12" fill="#6BBF35" opacity="0.5" transform="rotate(70 80 0)"/></svg>
     <div class="slide-body">
-      <span class="char-in" style="font-size:clamp(5rem,18vw,9rem);line-height:1;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.12));">🦁</span>
+      <div class="eco-frame char-in" style="animation-delay:0.3s">
+        <img src="eco.jpg" alt="Eco de Maximiliano"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div style="display:none;flex-direction:column;align-items:center;justify-content:center;gap:0.4rem;">
+          <span style="font-size:2.5rem;">🤍</span>
+          <span style="font-size:0.7rem;letter-spacing:0.15em;color:var(--green-mid);text-transform:uppercase;">eco.jpg</span>
+        </div>
+      </div>
       <div class="t-script">Mi</div>
       <div class="t-gold">BABY</div>
       <span class="t-banner">SHOWER</span>
-      <div class="t-name">Maxi</div>
+      <div class="t-name">Maximiliano Moyano Rojas</div>
       <div class="gold-line"></div>
       <div class="t-body" style="font-size:0.95rem;color:#5A6A5A;letter-spacing:0.1em;animation-delay:1.4s">Mamá Samy &nbsp;·&nbsp; Papá Wlad</div>
     </div>
@@ -213,7 +246,7 @@ body { font-family: 'Lato', sans-serif; background: #111; overflow-x: hidden; }
       <div class="t-italic">&#161;El nacimiento de<br>un nuevo Rey<br>est&#225; cerca!</div>
       <div class="gold-line" style="animation-delay:0.5s"></div>
       <span class="char-in" style="font-size:clamp(5rem,16vw,8rem);line-height:1;animation-delay:0.6s">&#128081;</span>
-      <div class="t-script" style="animation-delay:0.9s;font-size:clamp(1.8rem,6vw,3rem);">&#161;Bienvenido, Maxi!</div>
+      <div class="t-script" style="animation-delay:0.9s;font-size:clamp(1.8rem,6vw,3rem);">&#161;Bienvenido, Maxi!#161;Bienvenido, Maximiliano!</div>
     </div>
   </div>
 
@@ -244,7 +277,7 @@ body { font-family: 'Lato', sans-serif; background: #111; overflow-x: hidden; }
     <svg class="leaf-corner lc-br" width="200" height="200" viewBox="0 0 180 180" fill="none"><ellipse cx="20" cy="20" rx="60" ry="22" fill="#4A8C28" opacity="0.75" transform="rotate(40 20 20)"/><ellipse cx="10" cy="50" rx="50" ry="16" fill="#3D7A1A" opacity="0.65" transform="rotate(20 10 50)"/></svg>
     <div class="slide-body">
       <span class="char-in" style="font-size:clamp(4rem,12vw,7rem);animation-delay:0.1s">&#9203;</span>
-      <div class="t-script" style="animation-delay:0.3s;font-size:clamp(1.4rem,4vw,2rem)">Faltan para conocer a Maxi</div>
+      <div class="t-script" style="animation-delay:0.3s;font-size:clamp(1.4rem,4vw,2rem)">Faltan para conocer a Maximilianomiliano Moyano Rojas</div>
       <div class="cd-grid">
         <div class="cd-block"><div class="cd-ring"><svg viewBox="0 0 100 100"><circle class="track" cx="50" cy="50" r="44"/><circle class="progress" cx="50" cy="50" r="44" id="ring-days" stroke-dasharray="276.46" stroke-dashoffset="276.46"/></svg><div class="cd-num" id="num-days">--</div></div><span class="cd-lbl">D&#237;as</span></div>
         <div class="cd-block"><div class="cd-ring"><svg viewBox="0 0 100 100"><circle class="track" cx="50" cy="50" r="44"/><circle class="progress" cx="50" cy="50" r="44" id="ring-hours" stroke-dasharray="276.46" stroke-dashoffset="276.46"/></svg><div class="cd-num" id="num-hours">--</div></div><span class="cd-lbl">Horas</span></div>
