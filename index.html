@@ -54,7 +54,42 @@ body { font-family: 'Lato', sans-serif; background: #111; overflow-x: hidden; }
 .overlay-banner::before { right:100%; transform:translateY(-50%); }
 .overlay-banner::after  { left:100%;  transform:translateY(-50%) scaleX(-1); }
 .overlay-name { font-family:'Great Vibes',cursive; font-size:clamp(2.5rem,9vw,4.5rem); color:var(--green-dark); display:block; margin-bottom:2.5rem; }
-.enter-btn { background:var(--green-banner); border:none; color:white; font-family:'Lato',sans-serif; font-size:0.9rem; letter-spacing:0.3em; text-transform:uppercase; padding:0.9rem 2.5rem; border-radius:50px; cursor:pointer; transition:background 0.3s,transform 0.2s; animation:pulse-btn 2s ease-in-out infinite; }
+.overlay-invite-top {
+  font-family: 'Lato', sans-serif;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--green-banner);
+  margin-bottom: 0.7rem;
+  font-weight: 400;
+  opacity: 0;
+  animation: textIn 0.6s ease 0.2s forwards;
+}
+.overlay-invite-sub {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  color: #3A5A3A;
+  line-height: 1.65;
+  max-width: 320px;
+  margin: 0 auto 0.5rem;
+  opacity: 0;
+  animation: textIn 0.7s ease 0.4s forwards;
+}
+.overlay-divider {
+  width: 50px; height: 1.5px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 1rem auto 1.2rem;
+  opacity: 0;
+  animation: textIn 0.5s ease 0.65s forwards;
+}
+@keyframes textIn { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.overlay-script { opacity: 0; animation: textIn 0.6s ease 0.8s forwards; }
+.overlay-big    { opacity: 0; animation: textIn 0.6s ease 0.95s forwards; }
+.overlay-banner { opacity: 0; animation: textIn 0.6s ease 1.1s forwards; }
+.overlay-name   { opacity: 0; animation: textIn 0.6s ease 1.25s forwards; }
+.enter-btn      { opacity: 0; animation: textIn 0.6s ease 1.45s forwards, pulse-btn 2s ease 1.45s infinite; }
+.enter-btn { background:var(--green-banner); border:none; color:white; font-family:'Lato',sans-serif; font-size:0.9rem; letter-spacing:0.3em; text-transform:uppercase; padding:0.9rem 2.5rem; border-radius:50px; cursor:pointer; transition:background 0.3s,transform 0.2s; }
 @keyframes pulse-btn { 0%,100%{box-shadow:0 0 0 0 rgba(46,107,46,0)} 50%{box-shadow:0 0 0 10px rgba(46,107,46,0.15)} }
 .enter-btn:hover { background:var(--green-mid); transform:scale(1.04); }
 .enter-hint { margin-top:0.8rem; font-size:0.72rem; color:rgba(45,80,22,0.45); letter-spacing:0.15em; }
@@ -117,7 +152,7 @@ body { font-family: 'Lato', sans-serif; background: #111; overflow-x: hidden; }
 </head>
 <body>
 
-<!-- <audio id="bg-audio" loop src="audio.mp3"></audio> -->
+<audio id="bg-audio" loop src="song.mp3"></audio>
 <button id="audio-btn" onclick="toggleAudio()">🔊</button>
 
 <!-- WELCOME OVERLAY -->
@@ -128,12 +163,15 @@ body { font-family: 'Lato', sans-serif; background: #111; overflow-x: hidden; }
   <svg class="leaf-corner lc-br" width="200" height="200" viewBox="0 0 180 180" fill="none"><ellipse cx="20" cy="20" rx="60" ry="22" fill="#4A8C28" opacity="0.75" transform="rotate(40 20 20)"/><ellipse cx="10" cy="50" rx="50" ry="16" fill="#3D7A1A" opacity="0.65" transform="rotate(20 10 50)"/><ellipse cx="50" cy="10" rx="55" ry="14" fill="#5AAB30" opacity="0.55" transform="rotate(55 50 10)"/><ellipse cx="0" cy="80" rx="45" ry="13" fill="#2D5016" opacity="0.6" transform="rotate(10 0 80)"/></svg>
   <div class="overlay-content">
     <span class="overlay-simba">🦁</span>
+    <div class="overlay-invite-top">&#161;Tienes una invitaci&#243;n especial!</div>
+    <div class="overlay-invite-sub">Samy &amp; Wlad te invitan a ser parte de uno de los momentos m&#225;s especiales de sus vidas</div>
+    <div class="overlay-divider"></div>
     <div class="overlay-script">Mi</div>
     <div class="overlay-big">BABY</div>
     <span class="overlay-banner">SHOWER</span><br>
-    <span class="overlay-name">Maximiliano Moyano Rojas</span>
-    <button class="enter-btn" onclick="enterSite()">&#10022; &nbsp;Entrar al reino&nbsp; &#10022;</button>
-    <p class="enter-hint">Toca para activar sonido</p>
+    <span class="overlay-name">Maxi</span>
+    <button class="enter-btn" onclick="enterSite()">&#10022; &nbsp;Ver mi invitaci&#243;n&nbsp; &#10022;</button>
+    <p class="enter-hint">Toca para abrir con sonido</p>
   </div>
 </div>
 
@@ -158,7 +196,7 @@ body { font-family: 'Lato', sans-serif; background: #111; overflow-x: hidden; }
       <div class="t-script">Mi</div>
       <div class="t-gold">BABY</div>
       <span class="t-banner">SHOWER</span>
-      <div class="t-name">Maximiliano Moyano Rojas</div>
+      <div class="t-name">Maxi</div>
       <div class="gold-line"></div>
       <div class="t-body" style="font-size:0.95rem;color:#5A6A5A;letter-spacing:0.1em;animation-delay:1.4s">Mamá Samy &nbsp;·&nbsp; Papá Wlad</div>
     </div>
@@ -318,7 +356,7 @@ setInterval(updateCountdown,1000);
 function enterSite(){
   document.getElementById('welcome-overlay').classList.add('hidden');
   const audio=document.getElementById('bg-audio');
-  if(audio){audio.volume=0.35;audio.play().then(()=>document.getElementById('audio-btn').classList.add('show')).catch(()=>{});}
+  if(audio){audio.volume=0.75;audio.play().then(()=>document.getElementById('audio-btn').classList.add('show')).catch(()=>{});}
 }
 function toggleAudio(){
   const audio=document.getElementById('bg-audio'),btn=document.getElementById('audio-btn');
