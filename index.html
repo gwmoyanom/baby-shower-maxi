@@ -287,90 +287,206 @@ body { font-family: 'Lato', sans-serif; background: #111; overflow-x: hidden; }
 <div id="welcome-overlay">
   <div class="ov-card">
 
-    <!-- SVG leaves & gold decorations -->
+    <!-- SVG botanical leaves & gold decorations -->
     <svg class="ov-leaves" viewBox="0 0 420 680" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <!-- TOP LEFT leaves -->
-      <g opacity="0.85">
-        <ellipse cx="10" cy="30" rx="55" ry="16" fill="#5A9A30" transform="rotate(35 10 30)"/>
-        <ellipse cx="5" cy="60" rx="48" ry="14" fill="#4A8A25" transform="rotate(15 5 60)"/>
-        <ellipse cx="30" cy="10" rx="52" ry="15" fill="#6AAF35" transform="rotate(55 30 10)"/>
-        <ellipse cx="0" cy="90" rx="42" ry="13" fill="#3D7A1A" transform="rotate(5 0 90)"/>
-        <ellipse cx="55" cy="5" rx="45" ry="13" fill="#5A9A30" transform="rotate(70 55 5)"/>
-        <ellipse cx="20" cy="110" rx="38" ry="11" fill="#4A8A25" transform="rotate(-5 20 110)"/>
-        <ellipse cx="70" cy="25" rx="40" ry="11" fill="#6AAF35" transform="rotate(80 70 25)"/>
-        <!-- stems -->
-        <line x1="30" y1="5" x2="5" y2="80" stroke="#3D7A1A" stroke-width="1.5" opacity="0.5"/>
-        <line x1="10" y1="10" x2="40" y2="95" stroke="#4A8A25" stroke-width="1" opacity="0.4"/>
+      <defs>
+        <!-- Leaf gradients for depth -->
+        <linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#7DC44A"/>
+          <stop offset="100%" stop-color="#3D7A1A"/>
+        </linearGradient>
+        <linearGradient id="lg2" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#5A9A30"/>
+          <stop offset="100%" stop-color="#2D5016"/>
+        </linearGradient>
+        <linearGradient id="lg3" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#9FCC60"/>
+          <stop offset="100%" stop-color="#4A8A25"/>
+        </linearGradient>
+        <linearGradient id="lgGold" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#E8BE6A"/>
+          <stop offset="100%" stop-color="#C9922A"/>
+        </linearGradient>
+      </defs>
+
+      <!-- ═══ WATERCOLOR WASH PATCHES ═══ -->
+      <ellipse cx="60"  cy="100" rx="120" ry="70"  fill="#B8D890" opacity="0.12"/>
+      <ellipse cx="360" cy="120" rx="110" ry="65"  fill="#A8D080" opacity="0.10"/>
+      <ellipse cx="50"  cy="560" rx="110" ry="65"  fill="#B8D890" opacity="0.10"/>
+      <ellipse cx="370" cy="570" rx="100" ry="60"  fill="#A8D080" opacity="0.09"/>
+      <ellipse cx="210" cy="340" rx="90"  ry="55"  fill="#C8E8A0" opacity="0.06"/>
+
+      <!-- ═══ TOP LEFT CORNER — main branch ═══ -->
+      <g>
+        <!-- main stem -->
+        <path d="M-5,5 C20,40 15,80 30,130" stroke="#4A8A25" stroke-width="2" fill="none" opacity="0.7"/>
+        <!-- large back leaves -->
+        <path d="M5,15 C-10,0 30,-5 40,20 C30,35 10,30 5,15Z" fill="url(#lg2)" opacity="0.8"/>
+        <line x1="5" y1="15" x2="23" y2="17" stroke="#2D5016" stroke-width="0.6" opacity="0.5"/>
+        <path d="M0,45 C-18,25 28,18 35,45 C25,62 8,58 0,45Z" fill="url(#lg1)" opacity="0.85"/>
+        <line x1="0" y1="45" x2="18" y2="43" stroke="#2D5016" stroke-width="0.6" opacity="0.5"/>
+        <path d="M25,5 C40,-15 70,5 65,35 C52,50 30,38 25,5Z" fill="url(#lg3)" opacity="0.75"/>
+        <line x1="25" y1="5" x2="47" y2="20" stroke="#3A7A18" stroke-width="0.6" opacity="0.45"/>
+        <!-- mid leaves -->
+        <path d="M12,68 C-8,50 35,42 40,68 C30,85 18,82 12,68Z" fill="url(#lg2)" opacity="0.8"/>
+        <line x1="12" y1="68" x2="26" y2="65" stroke="#2D5016" stroke-width="0.5" opacity="0.45"/>
+        <path d="M40,30 C55,10 90,25 85,55 C72,68 48,58 40,30Z" fill="url(#lg1)" opacity="0.7"/>
+        <line x1="40" y1="30" x2="63" y2="42" stroke="#3A7A18" stroke-width="0.5" opacity="0.4"/>
+        <path d="M55,15 C75,-5 105,12 98,42 C84,56 60,46 55,15Z" fill="url(#lg3)" opacity="0.65"/>
+        <!-- small accent leaves -->
+        <path d="M18,95 C5,78 40,72 42,92 C35,105 24,103 18,95Z" fill="url(#lg1)" opacity="0.75"/>
+        <path d="M60,50 C75,32 102,48 96,72 C84,83 64,73 60,50Z" fill="url(#lg2)" opacity="0.68"/>
+        <path d="M80,10 C98,-8 122,10 115,36 C104,48 82,38 80,10Z" fill="url(#lg3)" opacity="0.6"/>
+        <!-- tiny tip leaves -->
+        <path d="M25,115 C14,100 44,96 44,114 C38,124 29,122 25,115Z" fill="#5A9A30" opacity="0.7"/>
+        <path d="M95,65 C108,48 130,65 122,85 C112,95 96,85 95,65Z" fill="#6AAF35" opacity="0.6"/>
+        <!-- veins on big leaves -->
+        <line x1="22" y1="25" x2="15" y2="10" stroke="#2D5016" stroke-width="0.5" opacity="0.3"/>
+        <line x1="55" y1="38" x2="46" y2="22" stroke="#2D5016" stroke-width="0.5" opacity="0.3"/>
       </g>
-      <!-- TOP RIGHT leaves -->
-      <g opacity="0.85" transform="translate(420,0) scale(-1,1)">
-        <ellipse cx="10" cy="30" rx="55" ry="16" fill="#5A9A30" transform="rotate(35 10 30)"/>
-        <ellipse cx="5" cy="60" rx="48" ry="14" fill="#4A8A25" transform="rotate(15 5 60)"/>
-        <ellipse cx="30" cy="10" rx="52" ry="15" fill="#6AAF35" transform="rotate(55 30 10)"/>
-        <ellipse cx="0" cy="90" rx="42" ry="13" fill="#3D7A1A" transform="rotate(5 0 90)"/>
-        <ellipse cx="55" cy="5" rx="45" ry="13" fill="#5A9A30" transform="rotate(70 55 5)"/>
-        <ellipse cx="20" cy="110" rx="38" ry="11" fill="#4A8A25" transform="rotate(-5 20 110)"/>
+
+      <!-- ═══ TOP RIGHT CORNER — mirror ═══ -->
+      <g transform="translate(420,0) scale(-1,1)">
+        <path d="M-5,5 C20,40 15,80 30,130" stroke="#4A8A25" stroke-width="2" fill="none" opacity="0.7"/>
+        <path d="M5,15 C-10,0 30,-5 40,20 C30,35 10,30 5,15Z" fill="url(#lg2)" opacity="0.8"/>
+        <line x1="5" y1="15" x2="23" y2="17" stroke="#2D5016" stroke-width="0.6" opacity="0.5"/>
+        <path d="M0,45 C-18,25 28,18 35,45 C25,62 8,58 0,45Z" fill="url(#lg1)" opacity="0.85"/>
+        <line x1="0" y1="45" x2="18" y2="43" stroke="#2D5016" stroke-width="0.6" opacity="0.5"/>
+        <path d="M25,5 C40,-15 70,5 65,35 C52,50 30,38 25,5Z" fill="url(#lg3)" opacity="0.75"/>
+        <path d="M12,68 C-8,50 35,42 40,68 C30,85 18,82 12,68Z" fill="url(#lg2)" opacity="0.8"/>
+        <path d="M40,30 C55,10 90,25 85,55 C72,68 48,58 40,30Z" fill="url(#lg1)" opacity="0.7"/>
+        <path d="M55,15 C75,-5 105,12 98,42 C84,56 60,46 55,15Z" fill="url(#lg3)" opacity="0.65"/>
+        <path d="M18,95 C5,78 40,72 42,92 C35,105 24,103 18,95Z" fill="url(#lg1)" opacity="0.75"/>
+        <path d="M60,50 C75,32 102,48 96,72 C84,83 64,73 60,50Z" fill="url(#lg2)" opacity="0.68"/>
+        <path d="M80,10 C98,-8 122,10 115,36 C104,48 82,38 80,10Z" fill="url(#lg3)" opacity="0.6"/>
+        <path d="M25,115 C14,100 44,96 44,114 C38,124 29,122 25,115Z" fill="#5A9A30" opacity="0.7"/>
+        <path d="M95,65 C108,48 130,65 122,85 C112,95 96,85 95,65Z" fill="#6AAF35" opacity="0.6"/>
       </g>
-      <!-- BOTTOM LEFT leaves -->
-      <g opacity="0.85" transform="translate(0,680) scale(1,-1)">
-        <ellipse cx="10" cy="30" rx="55" ry="16" fill="#5A9A30" transform="rotate(35 10 30)"/>
-        <ellipse cx="5" cy="65" rx="50" ry="15" fill="#4A8A25" transform="rotate(18 5 65)"/>
-        <ellipse cx="35" cy="8"  rx="52" ry="15" fill="#6AAF35" transform="rotate(58 35 8)"/>
-        <ellipse cx="0" cy="95" rx="44" ry="13" fill="#3D7A1A" transform="rotate(7 0 95)"/>
-        <ellipse cx="60" cy="5" rx="46" ry="13" fill="#5A9A30" transform="rotate(72 60 5)"/>
-        <ellipse cx="22" cy="115" rx="38" ry="11" fill="#4A8A25" transform="rotate(-4 22 115)"/>
+
+      <!-- ═══ BOTTOM LEFT CORNER ═══ -->
+      <g transform="translate(0,680) scale(1,-1)">
+        <path d="M-5,5 C20,45 18,85 35,140" stroke="#4A8A25" stroke-width="2" fill="none" opacity="0.65"/>
+        <path d="M5,18 C-12,2 32,-4 42,22 C31,38 12,32 5,18Z" fill="url(#lg2)" opacity="0.82"/>
+        <line x1="5" y1="18" x2="24" y2="19" stroke="#2D5016" stroke-width="0.6" opacity="0.5"/>
+        <path d="M0,50 C-20,28 30,20 38,48 C28,65 8,62 0,50Z" fill="url(#lg1)" opacity="0.85"/>
+        <path d="M28,8 C44,-14 74,8 68,38 C55,54 32,40 28,8Z" fill="url(#lg3)" opacity="0.72"/>
+        <path d="M14,75 C-6,55 38,46 42,72 C32,88 20,86 14,75Z" fill="url(#lg2)" opacity="0.78"/>
+        <path d="M42,32 C58,12 92,28 87,58 C74,72 50,60 42,32Z" fill="url(#lg1)" opacity="0.68"/>
+        <path d="M58,18 C78,-4 108,14 100,44 C88,58 62,48 58,18Z" fill="url(#lg3)" opacity="0.62"/>
+        <path d="M22,100 C8,82 44,76 46,98 C39,110 28,108 22,100Z" fill="url(#lg1)" opacity="0.72"/>
+        <path d="M65,55 C80,36 106,52 98,75 C86,88 67,76 65,55Z" fill="url(#lg2)" opacity="0.65"/>
+        <path d="M88,15 C106,-6 128,14 120,40 C108,52 86,40 88,15Z" fill="url(#lg3)" opacity="0.58"/>
       </g>
-      <!-- BOTTOM RIGHT leaves -->
-      <g opacity="0.85" transform="translate(420,680) scale(-1,-1)">
-        <ellipse cx="10" cy="30" rx="55" ry="16" fill="#5A9A30" transform="rotate(35 10 30)"/>
-        <ellipse cx="5" cy="65" rx="50" ry="15" fill="#4A8A25" transform="rotate(18 5 65)"/>
-        <ellipse cx="35" cy="8"  rx="52" ry="15" fill="#6AAF35" transform="rotate(58 35 8)"/>
-        <ellipse cx="0" cy="95" rx="44" ry="13" fill="#3D7A1A" transform="rotate(7 0 95)"/>
-        <ellipse cx="60" cy="5" rx="46" ry="13" fill="#5A9A30" transform="rotate(72 60 5)"/>
+
+      <!-- ═══ BOTTOM RIGHT CORNER ═══ -->
+      <g transform="translate(420,680) scale(-1,-1)">
+        <path d="M-5,5 C20,45 18,85 35,140" stroke="#4A8A25" stroke-width="2" fill="none" opacity="0.65"/>
+        <path d="M5,18 C-12,2 32,-4 42,22 C31,38 12,32 5,18Z" fill="url(#lg2)" opacity="0.82"/>
+        <path d="M0,50 C-20,28 30,20 38,48 C28,65 8,62 0,50Z" fill="url(#lg1)" opacity="0.85"/>
+        <path d="M28,8 C44,-14 74,8 68,38 C55,54 32,40 28,8Z" fill="url(#lg3)" opacity="0.72"/>
+        <path d="M14,75 C-6,55 38,46 42,72 C32,88 20,86 14,75Z" fill="url(#lg2)" opacity="0.78"/>
+        <path d="M42,32 C58,12 92,28 87,58 C74,72 50,60 42,32Z" fill="url(#lg1)" opacity="0.68"/>
+        <path d="M58,18 C78,-4 108,14 100,44 C88,58 62,48 58,18Z" fill="url(#lg3)" opacity="0.62"/>
+        <path d="M22,100 C8,82 44,76 46,98 C39,110 28,108 22,100Z" fill="url(#lg1)" opacity="0.72"/>
+        <path d="M65,55 C80,36 106,52 98,75 C86,88 67,76 65,55Z" fill="url(#lg2)" opacity="0.65"/>
       </g>
-      <!-- LEFT MID leaves -->
-      <g opacity="0.6">
-        <ellipse cx="-5" cy="320" rx="50" ry="14" fill="#5A9A30" transform="rotate(20 -5 320)"/>
-        <ellipse cx="-5" cy="350" rx="44" ry="12" fill="#4A8A25" transform="rotate(8 -5 350)"/>
-        <ellipse cx="-5" cy="375" rx="38" ry="11" fill="#6AAF35" transform="rotate(-5 -5 375)"/>
+
+      <!-- ═══ LEFT SIDE MID sprigs ═══ -->
+      <g opacity="0.7">
+        <path d="M0,290 C18,275 38,288 30,308 C20,320 4,315 0,290Z" fill="url(#lg2)"/>
+        <line x1="0" y1="290" x2="16" y2="298" stroke="#2D5016" stroke-width="0.5" opacity="0.4"/>
+        <path d="M0,322 C20,305 42,318 34,340 C22,353 5,348 0,322Z" fill="url(#lg1)"/>
+        <path d="M0,355 C16,340 36,352 28,372 C17,384 3,379 0,355Z" fill="url(#lg3)" opacity="0.8"/>
+        <path d="M2,385 C18,370 35,382 27,400 C17,411 4,406 2,385Z" fill="url(#lg2)" opacity="0.65"/>
       </g>
-      <!-- RIGHT MID leaves -->
-      <g opacity="0.6" transform="translate(420,0) scale(-1,1)">
-        <ellipse cx="-5" cy="320" rx="50" ry="14" fill="#5A9A30" transform="rotate(20 -5 320)"/>
-        <ellipse cx="-5" cy="350" rx="44" ry="12" fill="#4A8A25" transform="rotate(8 -5 350)"/>
-        <ellipse cx="-5" cy="375" rx="38" ry="11" fill="#6AAF35" transform="rotate(-5 -5 375)"/>
+
+      <!-- ═══ RIGHT SIDE MID sprigs ═══ -->
+      <g opacity="0.7" transform="translate(420,0) scale(-1,1)">
+        <path d="M0,290 C18,275 38,288 30,308 C20,320 4,315 0,290Z" fill="url(#lg2)"/>
+        <path d="M0,322 C20,305 42,318 34,340 C22,353 5,348 0,322Z" fill="url(#lg1)"/>
+        <path d="M0,355 C16,340 36,352 28,372 C17,384 3,379 0,355Z" fill="url(#lg3)" opacity="0.8"/>
+        <path d="M2,385 C18,370 35,382 27,400 C17,411 4,406 2,385Z" fill="url(#lg2)" opacity="0.65"/>
       </g>
-      <!-- Gold hearts scattered -->
-      <g fill="#C9922A" opacity="0.55" font-size="12">
-        <text x="85"  y="55"  font-size="11">&#9825;</text>
-        <text x="320" y="45"  font-size="10">&#9825;</text>
-        <text x="55"  y="200" font-size="9">&#9825;</text>
-        <text x="355" y="195" font-size="9">&#9825;</text>
-        <text x="75"  y="420" font-size="10">&#9825;</text>
-        <text x="340" y="415" font-size="10">&#9825;</text>
-        <text x="110" y="580" font-size="9">&#9825;</text>
-        <text x="305" y="575" font-size="9">&#9825;</text>
-        <text x="200" y="30"  font-size="8">&#9825;</text>
+
+      <!-- ═══ ECO WREATH — ring of leaves around the photo area (center top) ═══ -->
+      <!-- Left arc of wreath -->
+      <g opacity="0.78">
+        <path d="M148,192 C138,175 158,162 168,178 C162,190 152,193 148,192Z" fill="url(#lg1)"/>
+        <line x1="148" y1="192" x2="158" y2="180" stroke="#2D5016" stroke-width="0.5" opacity="0.5"/>
+        <path d="M138,215 C124,200 146,185 156,202 C150,215 141,218 138,215Z" fill="url(#lg2)"/>
+        <path d="M135,240 C122,224 144,210 153,228 C147,240 137,243 135,240Z" fill="url(#lg3)"/>
+        <path d="M140,264 C128,248 150,236 158,254 C152,265 142,267 140,264Z" fill="url(#lg1)"/>
+        <path d="M152,284 C142,268 164,258 170,275 C164,286 154,287 152,284Z" fill="url(#lg2)"/>
       </g>
-      <!-- Gold sparkle stars -->
-      <g fill="#C9922A" opacity="0.45">
-        <text x="95"  y="140" font-size="10">&#10022;</text>
-        <text x="315" y="135" font-size="9">&#10022;</text>
-        <text x="60"  y="290" font-size="8">&#10022;</text>
-        <text x="350" y="285" font-size="8">&#10022;</text>
-        <text x="130" y="620" font-size="9">&#10022;</text>
-        <text x="285" y="618" font-size="9">&#10022;</text>
+      <!-- Right arc of wreath -->
+      <g opacity="0.78">
+        <path d="M272,192 C282,175 262,162 252,178 C258,190 268,193 272,192Z" fill="url(#lg1)"/>
+        <line x1="272" y1="192" x2="262" y2="180" stroke="#2D5016" stroke-width="0.5" opacity="0.5"/>
+        <path d="M282,215 C296,200 274,185 264,202 C270,215 279,218 282,215Z" fill="url(#lg2)"/>
+        <path d="M285,240 C298,224 276,210 267,228 C273,240 283,243 285,240Z" fill="url(#lg3)"/>
+        <path d="M280,264 C292,248 270,236 262,254 C268,265 278,267 280,264Z" fill="url(#lg1)"/>
+        <path d="M268,284 C278,268 256,258 250,275 C256,286 266,287 268,284Z" fill="url(#lg2)"/>
       </g>
-      <!-- Gold leaf sprigs top -->
-      <g stroke="#C9922A" stroke-width="0.8" fill="none" opacity="0.4">
-        <path d="M160 55 Q170 40 185 50"/>
-        <path d="M260 55 Q250 40 235 50"/>
-        <path d="M170 42 Q178 28 190 38"/>
-        <path d="M250 42 Q242 28 230 38"/>
+      <!-- Top arc leaves (above photo) -->
+      <g opacity="0.72">
+        <path d="M185,168 C182,152 200,145 206,162 C202,172 188,173 185,168Z" fill="url(#lg3)"/>
+        <path d="M205,158 C204,142 222,138 226,155 C221,165 207,166 205,158Z" fill="url(#lg1)"/>
+        <path d="M225,162 C226,146 244,144 246,161 C240,171 226,170 225,162Z" fill="url(#lg2)"/>
+        <path d="M244,170 C248,154 264,155 264,172 C258,181 244,178 244,170Z" fill="url(#lg3)"/>
       </g>
-      <!-- Watercolor wash patches -->
-      <ellipse cx="70" cy="180" rx="80" ry="50" fill="#A8D080" opacity="0.07"/>
-      <ellipse cx="350" cy="500" rx="80" ry="50" fill="#A8D080" opacity="0.07"/>
+
+      <!-- ═══ GOLD SPRIGS — top center botanical twigs ═══ -->
+      <g stroke="url(#lgGold)" fill="none" opacity="0.55">
+        <!-- left sprig -->
+        <path d="M162,62 C158,48 168,40 172,52" stroke-width="1"/>
+        <path d="M162,62 C152,50 158,38 166,46" stroke-width="0.8"/>
+        <path d="M158,70 C148,58 155,46 162,55" stroke-width="0.8"/>
+        <path d="M165,55 C162,42 174,36 176,48" stroke-width="0.7"/>
+        <!-- right sprig -->
+        <path d="M258,62 C262,48 252,40 248,52" stroke-width="1"/>
+        <path d="M258,62 C268,50 262,38 254,46" stroke-width="0.8"/>
+        <path d="M262,70 C272,58 265,46 258,55" stroke-width="0.8"/>
+        <path d="M255,55 C258,42 246,36 244,48" stroke-width="0.7"/>
+      </g>
+      <!-- Gold tiny leaves on sprigs -->
+      <g fill="url(#lgGold)" opacity="0.5">
+        <path d="M168,46 C164,38 174,36 174,44 C171,49 168,48 168,46Z"/>
+        <path d="M162,54 C156,46 166,42 168,50 C165,56 162,56 162,54Z"/>
+        <path d="M252,46 C256,38 246,36 246,44 C249,49 252,48 252,46Z"/>
+        <path d="M258,54 C264,46 254,42 252,50 C255,56 258,56 258,54Z"/>
+      </g>
+
+      <!-- ═══ GOLD HEARTS scattered ═══ -->
+      <g fill="#C9922A" opacity="0.5">
+        <path d="M90,58 C90,54 84,50 84,56 C84,60 90,66 90,66 C90,66 96,60 96,56 C96,50 90,54 90,58Z"/>
+        <path d="M330,48 C330,44 324,40 324,46 C324,50 330,56 330,56 C330,56 336,50 336,46 C336,40 330,44 330,48Z"/>
+        <path d="M58,210 C58,207 54,204 54,208 C54,211 58,215 58,215 C58,215 62,211 62,208 C62,204 58,207 58,210Z"/>
+        <path d="M362,205 C362,202 358,199 358,203 C358,206 362,210 362,210 C362,210 366,206 366,203 C366,199 362,202 362,205Z"/>
+        <path d="M68,430 C68,427 64,424 64,428 C64,431 68,435 68,435 C68,435 72,431 72,428 C72,424 68,427 68,430Z"/>
+        <path d="M352,425 C352,422 348,419 348,423 C348,426 352,430 352,430 C352,430 356,426 356,423 C356,419 352,422 352,425Z"/>
+        <path d="M105,590 C105,587 101,584 101,588 C101,591 105,595 105,595 C105,595 109,591 109,588 C109,584 105,587 105,590Z"/>
+        <path d="M315,585 C315,582 311,579 311,583 C311,586 315,590 315,590 C315,590 319,586 319,583 C319,579 315,582 315,585Z"/>
+        <path d="M210,22 C210,19 206,16 206,20 C206,23 210,27 210,27 C210,27 214,23 214,20 C214,16 210,19 210,22Z"/>
+      </g>
+
+      <!-- ═══ GOLD SPARKLES / stars ═══ -->
+      <g fill="#C9922A" opacity="0.4">
+        <!-- 4-point stars -->
+        <path d="M100,148 L102,143 L104,148 L109,150 L104,152 L102,157 L100,152 L95,150Z"/>
+        <path d="M320,142 L322,137 L324,142 L329,144 L324,146 L322,151 L320,146 L315,144Z"/>
+        <path d="M62,300 L63.5,296 L65,300 L69,301.5 L65,303 L63.5,307 L62,303 L58,301.5Z"/>
+        <path d="M358,295 L359.5,291 L361,295 L365,296.5 L361,298 L359.5,302 L358,298 L354,296.5Z"/>
+        <path d="M120,628 L121.5,624 L123,628 L127,629.5 L123,631 L121.5,635 L120,631 L116,629.5Z"/>
+        <path d="M298,624 L299.5,620 L301,624 L305,625.5 L301,627 L299.5,631 L298,627 L294,625.5Z"/>
+      </g>
+
+      <!-- ═══ GOLD BOTANICAL LINES — top center ═══ -->
+      <g stroke="#C9922A" stroke-width="0.7" fill="none" opacity="0.35">
+        <path d="M175,78 Q182,65 196,72 Q188,58 196,48"/>
+        <path d="M196,72 Q190,60 184,52"/>
+        <path d="M245,78 Q238,65 224,72 Q232,58 224,48"/>
+        <path d="M224,72 Q230,60 236,52"/>
+      </g>
     </svg>
 
     <div class="ov-inner">
