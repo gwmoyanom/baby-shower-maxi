@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baby Shower Maxi 🦁</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9922A;
+    --gold-light: #E8BE6A;
+    --gold-pale: #F7E8C0;
+    --rust: #A0401A;
+    --terracotta: #C4623A;
+    --savanna: #F5EDDA;
+    --cream: #FDF6E8;
+    --brown: #5C3317;
+    --sky-dark: #0A1628;
+    --text-dark: #2A1A0A;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cormorant Garamond', serif;
+    background: var(--sky-dark);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ══════════════════════════════════
+     WELCOME OVERLAY
+  ══════════════════════════════════ */
+  #welcome-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #0A1628;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+  }
+
+  #welcome-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* Stars on overlay */
+  .overlay-stars {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .o-star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite alternate;
+  }
+
+  @keyframes twinkle {
+    from { opacity: 0.2; transform: scale(1); }
+    to   { opacity: 1;   transform: scale(1.6); }
+  }
+
+  .overlay-moon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #FFF8D0, #F5C040 50%, #E89A3A);
+    box-shadow: 0 0 60px 20px rgba(245,192,64,0.25);
+    margin-bottom: 2.5rem;
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-14px); }
+  }
+
+  .overlay-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 700;
+    color: var(--gold-pale);
+    text-align: center;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+  }
+
+  .overlay-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    font-style: italic;
+    color: var(--gold-light);
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .enter-btn {
+    border: 1.5px solid var(--gold);
+    background: transparent;
+    color: var(--gold-pale);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    border-radius: 60px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    animation: pulse-border 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-border {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(201,146,42,0); }
+    50%       { box-shadow: 0 0 0 8px rgba(201,146,42,0.2); }
+  }
+
+  .enter-btn:hover {
+    background: var(--gold);
+    color: #0A1628;
+  }
+
+  .overlay-hint {
+    margin-top: 1.2rem;
+    font-size: 0.75rem;
+    color: rgba(232,190,106,0.4);
+    letter-spacing: 0.15em;
+    font-style: italic;
+  }
+
+  /* ══════════════════════════════════
+     VIDEO BACKGROUND
+  ══════════════════════════════════ */
+  #hero-video-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+  }
+
+  #hero-video-bg.visible { opacity: 1; }
+
+  #hero-video-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.45) saturate(1.2);
+  }
+
+  /* Gradient overlay on top of video */
+  #hero-video-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(10,22,40,0.3) 0%,
+      rgba(10,22,40,0.1) 40%,
+      rgba(10,22,40,0.5) 80%,
+      rgba(10,22,40,0.95) 100%
+    );
+  }
+
+  /* When no video: show the painted sky gradient */
+  #hero-video-bg.no-video {
+    opacity: 1;
+    background: linear-gradient(180deg,
+      #0A1628 0%, #1A2E50 25%, #2C4870 45%,
+      #8B4513 60%, #A0522D 70%, #C4703A 80%,
+      #E89A3A 90%, #F5C040 100%
+    );
+  }
+
+  #hero-video-bg.no-video::after { display: none; }
+
+  /* ══════════════════════════════════
+     AUDIO CONTROLS
+  ══════════════════════════════════ */
+  #audio-btn {
+    position: fixed;
+    top: 1.2rem;
+    right: 1.2rem;
+    z-index: 1000;
+    background: rgba(10,22,40,0.7);
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    font-size: 1.3rem;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+    backdrop-filter: blur(6px);
+  }
+
+  #audio-btn.show { display: flex; }
+  #audio-btn:hover { background: rgba(201,146,42,0.3); }
+
+  /* ══════════════════════════════════
+     MAIN CONTENT
+  ══════════════════════════════════ */
+  #main-content {
+    position: relative;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 1s ease 0.3s;
+  }
+
+  #main-content.visible { opacity: 1; }
+
+  /* ══════════════════════════════════
+     HERO SECTION
+  ══════════════════════════════════ */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 3rem 2rem 6rem;
+  }
+
+  /* Static stars (fallback / layered) */
+  .stars-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite alternate;
+  }
+
+  /* Landscape SVG at bottom of hero */
+  .landscape-wrap {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    margin-top: 60px;
+  }
+
+  .pride-rock-tag {
+    font-size: 0.78rem;
+    letter-spacing: 0.4em;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    opacity: 0.85;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    font-weight: 700;
+    color: var(--gold-pale);
+    line-height: 1;
+    text-shadow: 2px 4px 24px rgba(0,0,0,0.6);
+    margin-bottom: 0.2rem;
+  }
+
+  .hero-of {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-style: italic;
+    color: var(--gold-light);
+    margin-bottom: 0.3rem;
+  }
+
+  .hero-baby {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 24px rgba(0,0,0,0.5);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-parents {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: rgba(232,190,106,0.75);
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+  }
+
+  .simba-icon {
+    font-size: clamp(4rem, 10vw, 6rem);
+    display: block;
+    margin-bottom: 1.2rem;
+    animation: float 4s ease-in-out infinite;
+    filter: drop-shadow(0 4px 14px rgba(0,0,0,0.5));
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 220px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+    color: var(--gold-light);
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    animation: bounce 2.2s ease-in-out infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(7px); }
+  }
+
+  /* ══════════════════════════════════
+     SECTIONS GENERAL
+  ══════════════════════════════════ */
+  section { padding: 5rem 2rem; position: relative; }
+
+  .section-inner {
+    max-width: 740px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--rust);
+    text-align: center;
+    margin-bottom: 1.2rem;
+  }
+
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    text-align: center;
+    color: var(--brown);
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+  }
+
+  .paw-divider {
+    text-align: center;
+    font-size: 1.2rem;
+    letter-spacing: 0.6rem;
+    margin: 0.5rem 0 2rem;
+    color: var(--gold);
+  }
+
+  /* ══════════════════════════════════
+     DETAILS SECTION
+  ══════════════════════════════════ */
+  .details-section { background: var(--savanna); }
+
+  .details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .detail-card {
+    background: white;
+    border: 1.5px solid var(--gold-light);
+    border-radius: 18px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .detail-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(201,146,42,0.15);
+  }
+
+  .detail-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  }
+
+  .detail-icon { font-size: 2.4rem; display: block; margin-bottom: 0.8rem; }
+
+  .detail-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .detail-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--brown);
+    line-height: 1.3;
+  }
+
+  .detail-sub {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--rust);
+    margin-top: 0.2rem;
+    display: block;
+  }
+
+  /* ══════════════════════════════════
+     QUOTE SECTION
+  ══════════════════════════════════ */
+  .quote-section {
+    background: linear-gradient(135deg, #1A2E50 0%, #0A1628 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quote-deco {
+    position: absolute;
+    font-size: 18rem;
+    opacity: 0.03;
+    top: -3rem;
+    right: -3rem;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .quote-marks-open {
+    font-family: 'Playfair Display', serif;
+    font-size: 7rem;
+    color: var(--gold);
+    opacity: 0.35;
+    line-height: 0.5;
+    display: block;
+    text-align: left;
+    margin-bottom: 0.5rem;
+  }
+
+  .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.15rem, 3vw, 1.65rem);
+    font-style: italic;
+    color: var(--gold-pale);
+    line-height: 1.85;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .quote-marks-close {
+    font-family: 'Playfair Display', serif;
+    font-size: 7rem;
+    color: var(--gold);
+    opacity: 0.35;
+    line-height: 0.5;
+    display: block;
+    text-align: right;
+    margin-top: 0.5rem;
+  }
+
+  .quote-gold-line {
+    width: 80px;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 2.5rem auto;
+  }
+
+  .quote-signature {
+    text-align: center;
+    color: rgba(232,190,106,0.55);
+    font-size: 1rem;
+    font-style: italic;
+  }
+
+  /* ══════════════════════════════════
+     FOOTER
+  ══════════════════════════════════ */
+  .footer-section {
+    background: #060E1C;
+    text-align: center;
+    padding: 5rem 2rem 4rem;
+  }
+
+  .footer-circle {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    margin: 0 auto 1.8rem;
+    background: rgba(201,146,42,0.08);
+    animation: float 5s ease-in-out infinite;
+  }
+
+  .footer-names {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--gold-light);
+    margin-bottom: 0.6rem;
+  }
+
+  .footer-tagline {
+    font-size: 1.05rem;
+    font-style: italic;
+    color: rgba(232,190,106,0.5);
+    margin-bottom: 2.5rem;
+  }
+
+  .footer-paws {
+    font-size: 1.4rem;
+    letter-spacing: 0.9rem;
+    opacity: 0.3;
+  }
+
+  /* ══════════════════════════════════
+     SCROLL REVEAL
+  ══════════════════════════════════ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ AUDIO (replace src with your mp3 file) ══ -->
+<!--
+  📁 HOW TO ADD AUDIO:
+  1. Put your .mp3 file in the same folder as index.html, rename it: audio.mp3
+  2. Uncomment the <audio> tag below (remove the comment markers)
+-->
+<!-- <audio id="bg-audio" loop src="audio.mp3"></audio> -->
+
+<!-- ══ WELCOME OVERLAY ══ -->
+<div id="welcome-overlay">
+  <div class="overlay-stars" id="overlay-stars"></div>
+  <div class="overlay-moon"></div>
+  <h1 class="overlay-title">Baby Shower<br>de Maxi</h1>
+  <p class="overlay-sub">Mamá Samy &nbsp;·&nbsp; Papá Wlad</p>
+  <button class="enter-btn" onclick="enterSite()">✦ &nbsp;Entrar al reino&nbsp; ✦</button>
+  <p class="overlay-hint">Toca para activar sonido y video</p>
+</div>
+
+<!-- ══ AUDIO TOGGLE BTN ══ -->
+<button id="audio-btn" onclick="toggleAudio()" title="Silenciar / Activar música">🔊</button>
+
+<!-- ══ VIDEO BACKGROUND ══ -->
+<!--
+  📁 HOW TO ADD VIDEO:
+  1. Put your .mp4 file in the same folder as index.html, rename it: background.mp4
+  2. Uncomment the <video> tag below (remove the comment markers)
+  3. Remove the "no-video" class from #hero-video-bg in the JS below
+-->
+<div id="hero-video-bg" class="no-video">
+  <!-- <video id="bg-video" autoplay muted loop playsinline src="background.mp4"></video> -->
+</div>
+
+<!-- ══ MAIN CONTENT ══ -->
+<div id="main-content">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="stars-layer" id="stars-layer"></div>
+
+    <div class="hero-content">
+      <span class="simba-icon">🦁</span>
+      <p class="pride-rock-tag">El Rey León presenta</p>
+      <h1 class="hero-title">Baby Shower</h1>
+      <p class="hero-of">de</p>
+      <p class="hero-baby">Maxi</p>
+      <p class="hero-parents">Mamá Samy &nbsp;·&nbsp; Papá Wlad</p>
+    </div>
+
+    <p class="scroll-hint">↓ Sigue el círculo de la vida</p>
+
+    <!-- Silhouette landscape -->
+    <div class="landscape-wrap">
+      <svg viewBox="0 0 1440 230" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:230px;">
+        <!-- Sky gradient hills -->
+        <ellipse cx="200"  cy="230" rx="320" ry="110" fill="#1A0E04" opacity="0.7"/>
+        <ellipse cx="780"  cy="230" rx="430" ry="130" fill="#1A0E04" opacity="0.6"/>
+        <ellipse cx="1280" cy="230" rx="270" ry="100" fill="#1A0E04" opacity="0.7"/>
+        <!-- Ground -->
+        <rect x="0" y="185" width="1440" height="50" fill="#0D0600"/>
+        <!-- Pride Rock center -->
+        <path d="M640 185 L672 105 L690 118 L715 82 L748 94 L778 185 Z" fill="#0D0600"/>
+        <!-- Tiny lion on rock -->
+        <ellipse cx="705" cy="78" rx="9" ry="6" fill="#060300"/>
+        <circle  cx="712" cy="73" r="4.5"    fill="#060300"/>
+        <path d="M708 72 Q716 66 722 71" stroke="#060300" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- Acacia left -->
+        <g transform="translate(70,40)">
+          <rect x="26" y="90" width="7" height="75" fill="#0D0600"/>
+          <rect x="23" y="68" width="4" height="52" fill="#0D0600" transform="rotate(-28 27 90)"/>
+          <rect x="30" y="68" width="4" height="52" fill="#0D0600" transform="rotate(28 30 90)"/>
+          <ellipse cx="30" cy="60" rx="48" ry="20" fill="#0D0600"/>
+          <ellipse cx="6"  cy="72" rx="26" ry="11" fill="#0D0600"/>
+          <ellipse cx="56" cy="74" rx="30" ry="12" fill="#0D0600"/>
+        </g>
+        <!-- Acacia right -->
+        <g transform="translate(1240,25)">
+          <rect x="26" y="100" width="7" height="85" fill="#0D0600"/>
+          <rect x="23" y="76" width="4" height="58" fill="#0D0600" transform="rotate(-24 27 100)"/>
+          <rect x="30" y="76" width="4" height="58" fill="#0D0600" transform="rotate(24 30 100)"/>
+          <ellipse cx="30" cy="68" rx="58" ry="24" fill="#0D0600"/>
+          <ellipse cx="4"  cy="82" rx="30" ry="13" fill="#0D0600"/>
+          <ellipse cx="60" cy="84" rx="34" ry="14" fill="#0D0600"/>
+        </g>
+        <!-- Small acacia mid-left -->
+        <g transform="translate(390,100)">
+          <rect x="12" y="48" width="5" height="45" fill="#0D0600"/>
+          <ellipse cx="14" cy="42" rx="30" ry="12" fill="#0D0600"/>
+        </g>
+        <!-- Small acacia mid-right -->
+        <g transform="translate(980,90)">
+          <rect x="12" y="56" width="5" height="50" fill="#0D0600"/>
+          <ellipse cx="14" cy="48" rx="34" ry="13" fill="#0D0600"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section class="details-section">
+    <div class="section-inner">
+      <p class="section-eyebrow reveal">Únete a la celebración</p>
+      <h2 class="section-heading reveal">El reino los espera</h2>
+      <div class="paw-divider reveal">🐾 &nbsp; 🌿 &nbsp; 🐾</div>
+
+      <div class="details-grid">
+        <div class="detail-card reveal">
+          <span class="detail-icon">📅</span>
+          <span class="detail-label">Fecha</span>
+          <span class="detail-value">13 de Junio</span>
+          <span class="detail-sub">2026</span>
+        </div>
+        <div class="detail-card reveal">
+          <span class="detail-icon">🕓</span>
+          <span class="detail-label">Hora</span>
+          <span class="detail-value">4:00 PM</span>
+          <span class="detail-sub">¡No llegues tarde!</span>
+        </div>
+        <div class="detail-card reveal">
+          <span class="detail-icon">📍</span>
+          <span class="detail-label">Lugar</span>
+          <span class="detail-value">San Gregorio II</span>
+          <span class="detail-sub">Pusuqui, Quito</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE / GIFT -->
+  <section class="quote-section">
+    <span class="quote-deco">🦁</span>
+    <div class="section-inner">
+      <p class="section-eyebrow reveal" style="color: var(--gold-light);">Con todo nuestro amor</p>
+      <span class="quote-marks-open reveal">"</span>
+      <p class="quote-text reveal">
+        Cada pañal, cada sonrisa y cada sueño de nuestro bebé comienza con mucho amor.
+        Si deseas hacernos un obsequio, una contribución económica será recibida con muchísimo cariño.
+      </p>
+      <span class="quote-marks-close reveal">"</span>
+      <div class="quote-gold-line"></div>
+      <p class="quote-signature reveal">— Samy &amp; Wlad</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <section class="footer-section">
+    <div class="footer-circle reveal">🦁</div>
+    <p class="footer-names reveal">¡Nos vemos pronto!</p>
+    <p class="footer-tagline reveal">El círculo de la vida continúa con Maxi</p>
+    <p class="footer-paws">🐾 🌙 ⭐ 🌙 🐾</p>
+  </section>
+
+</div><!-- end #main-content -->
+
+<script>
+  /* ── Stars generator ── */
+  function makeStars(containerId, count) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    for (let i = 0; i < count; i++) {
+      const s = document.createElement('div');
+      s.className = containerId === 'overlay-stars' ? 'o-star' : 'star';
+      s.style.cssText = `
+        left: ${Math.random()*100}%;
+        top:  ${Math.random()*100}%;
+        width:  ${(Math.random()*2+0.8).toFixed(1)}px;
+        height: ${(Math.random()*2+0.8).toFixed(1)}px;
+        animation-delay:    ${(Math.random()*3).toFixed(2)}s;
+        animation-duration: ${(2+Math.random()*3).toFixed(2)}s;
+      `;
+      container.appendChild(s);
+    }
+  }
+
+  makeStars('overlay-stars', 100);
+  makeStars('stars-layer', 70);
+
+  /* ── Enter site ── */
+  function enterSite() {
+    /* Hide overlay */
+    document.getElementById('welcome-overlay').classList.add('hidden');
+
+    /* Show main content */
+    document.getElementById('main-content').classList.add('visible');
+
+    /* Show video bg */
+    const videoBg = document.getElementById('hero-video-bg');
+    videoBg.classList.remove('no-video');   // Remove placeholder class if video exists
+    videoBg.classList.add('visible');
+
+    /* Try to play video */
+    const video = document.getElementById('bg-video');
+    if (video) {
+      video.play().catch(() => {});
+    } else {
+      /* No video: keep the gradient visible */
+      videoBg.classList.add('no-video');
+    }
+
+    /* Try to play audio */
+    const audio = document.getElementById('bg-audio');
+    if (audio) {
+      audio.volume = 0.4;
+      audio.play().then(() => {
+        document.getElementById('audio-btn').classList.add('show');
+      }).catch(() => {});
+    }
+
+    /* Trigger scroll reveals immediately for above-fold */
+    checkReveal();
+  }
+
+  /* ── Audio toggle ── */
+  function toggleAudio() {
+    const audio = document.getElementById('bg-audio');
+    const btn   = document.getElementById('audio-btn');
+    if (!audio) return;
+    if (audio.paused) {
+      audio.play();
+      btn.textContent = '🔊';
+    } else {
+      audio.pause();
+      btn.textContent = '🔇';
+    }
+  }
+
+  /* ── Scroll reveal ── */
+  function checkReveal() {
+    document.querySelectorAll('.reveal').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.92) {
+        el.classList.add('visible');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', checkReveal, { passive: true });
+  checkReveal();
+</script>
+</body>
+</html>
