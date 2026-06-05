@@ -260,6 +260,9 @@ body { font-family: 'Lato', sans-serif; background: #111; overflow-x: hidden; }
 .petal  { position:absolute; top:-20px; font-size:1rem; opacity:0.5; animation:fall linear infinite; }
 @keyframes fall { to{transform:translateY(110vh) rotate(360deg);opacity:0} }
 
+/* SUGERENCIA ENVELOPE */
+.sug-envelope { position:relative; display:inline-flex; align-items:center; justify-content:center; margin-bottom:0.2rem; }
+
 /* RSVP */
 .rsvp-box { background:rgba(255,255,255,0.82); border-radius:20px; border:1.5px solid rgba(61,122,26,0.18); padding:1.8rem 1.5rem; width:100%; max-width:400px; opacity:0; animation:textIn 0.7s ease 0.4s forwards; }
 .rsvp-field { margin-bottom:1.2rem; }
@@ -625,20 +628,96 @@ body { font-family: 'Lato', sans-serif; background: #111; overflow-x: hidden; }
     </div>
   </div>
 
-  <!-- SLIDE 5: FRASE -->
+  <!-- SLIDE 5: SUGERENCIA -->
   <div class="slide" id="slide-4">
     <div class="petals" id="petals-4"></div>
     <svg class="leaf-corner lc-tl" width="200" height="200" viewBox="0 0 180 180" fill="none"><ellipse cx="20" cy="20" rx="60" ry="22" fill="#4A8C28" opacity="0.75" transform="rotate(40 20 20)"/><ellipse cx="10" cy="50" rx="50" ry="16" fill="#3D7A1A" opacity="0.65" transform="rotate(20 10 50)"/><ellipse cx="50" cy="10" rx="55" ry="14" fill="#5AAB30" opacity="0.55" transform="rotate(55 50 10)"/></svg>
     <svg class="leaf-corner lc-tr" width="200" height="200" viewBox="0 0 180 180" fill="none"><ellipse cx="20" cy="20" rx="60" ry="22" fill="#4A8C28" opacity="0.75" transform="rotate(40 20 20)"/><ellipse cx="10" cy="50" rx="50" ry="16" fill="#3D7A1A" opacity="0.65" transform="rotate(20 10 50)"/><ellipse cx="50" cy="10" rx="55" ry="14" fill="#5AAB30" opacity="0.55" transform="rotate(55 50 10)"/></svg>
     <svg class="leaf-corner lc-bl" width="200" height="200" viewBox="0 0 180 180" fill="none"><ellipse cx="20" cy="20" rx="60" ry="22" fill="#4A8C28" opacity="0.75" transform="rotate(40 20 20)"/><ellipse cx="10" cy="50" rx="50" ry="16" fill="#3D7A1A" opacity="0.65" transform="rotate(20 10 50)"/></svg>
     <svg class="leaf-corner lc-br" width="200" height="200" viewBox="0 0 180 180" fill="none"><ellipse cx="20" cy="20" rx="60" ry="22" fill="#4A8C28" opacity="0.75" transform="rotate(40 20 20)"/><ellipse cx="10" cy="50" rx="50" ry="16" fill="#3D7A1A" opacity="0.65" transform="rotate(20 10 50)"/></svg>
-    <div class="slide-body">
-      <div class="quote-wrap">
-        <span class="quote-mark">"</span>
-        <p class="quote-text-inner">Cada pa&#241;al, cada sonrisa y cada sue&#241;o de nuestro beb&#233; comienza con mucho amor. Si deseas hacernos un obsequio, una contribuci&#243;n econ&#243;mica ser&#225; recibida con much&#237;simo cari&#241;o.</p>
-        <span class="quote-mark" style="text-align:right;display:block">"</span>
-        <p class="quote-sig">&#8212; Samy &amp; Wlad</p>
+
+    <div class="slide-body" style="gap:0.8rem; padding: 4rem 1.5rem 5rem;">
+
+      <!-- Envelope icon -->
+      <div class="sug-envelope" style="opacity:0;animation:textIn 0.6s ease 0.1s forwards">
+        <svg width="52" height="42" viewBox="0 0 52 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="50" height="40" rx="5" stroke="#5A8A3A" stroke-width="1.8" fill="white" fill-opacity="0.8"/>
+          <polyline points="1,1 26,24 51,1" stroke="#5A8A3A" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+          <!-- heart on envelope -->
+          <path d="M26,30 C26,30 20,25 20,21 C20,18.5 22,17 24,18 C25,18.5 26,20 26,20 C26,20 27,18.5 28,18 C30,17 32,18.5 32,21 C32,25 26,30 26,30Z" fill="#C9922A" opacity="0.8"/>
+        </svg>
+        <!-- Tiny leaf sprigs beside envelope -->
+        <svg style="position:absolute;left:-28px;top:8px" width="28" height="22" viewBox="0 0 28 22" fill="none">
+          <path d="M26,20 C18,14 10,8 2,4" stroke="#5A8A3A" stroke-width="1" fill="none"/>
+          <path d="M14,12 C10,6 16,2 18,8 C16,12 14,12 14,12Z" fill="#6AAF35" opacity="0.8"/>
+          <path d="M8,8  C4,2  10,-2 12,4  C10,8  8,8  8,8Z"   fill="#5A9A30" opacity="0.7"/>
+          <path d="M22,18 C18,12 24,8 26,14 C24,18 22,18 22,18Z" fill="#4A8A25" opacity="0.75"/>
+        </svg>
+        <svg style="position:absolute;right:-28px;top:8px;transform:scaleX(-1)" width="28" height="22" viewBox="0 0 28 22" fill="none">
+          <path d="M26,20 C18,14 10,8 2,4" stroke="#5A8A3A" stroke-width="1" fill="none"/>
+          <path d="M14,12 C10,6 16,2 18,8 C16,12 14,12 14,12Z" fill="#6AAF35" opacity="0.8"/>
+          <path d="M8,8  C4,2  10,-2 12,4  C10,8  8,8  8,8Z"   fill="#5A9A30" opacity="0.7"/>
+          <path d="M22,18 C18,12 24,8 26,14 C24,18 22,18 22,18Z" fill="#4A8A25" opacity="0.75"/>
+        </svg>
       </div>
+
+      <!-- Title -->
+      <div style="font-family:'Great Vibes',cursive;font-size:clamp(2rem,7vw,2.8rem);color:#5C3D1A;opacity:0;animation:textIn 0.6s ease 0.25s forwards;display:flex;align-items:center;gap:0.4rem;">
+        Sugerencia <span style="color:var(--gold);font-size:1.2rem">&#9829;</span>
+      </div>
+
+      <!-- Main text -->
+      <p style="font-family:'Lato',sans-serif;font-weight:400;font-size:clamp(0.88rem,2.2vw,1rem);color:#3A3A3A;line-height:1.75;text-align:center;max-width:340px;opacity:0;animation:textIn 0.7s ease 0.4s forwards;">
+        Tu presencia es lo m&#225;s importante.<br>
+        Si deseas dejarnos un detallito para nuestro beb&#233;, lo agradeceremos con el coraz&#243;n.<br><br>
+        Tu apoyo nos ayudar&#225; a recibirlo con todo lo que necesita.
+      </p>
+
+      <!-- Gold heart divider -->
+      <div style="opacity:0;animation:textIn 0.5s ease 0.55s forwards;display:flex;align-items:center;gap:0.5rem;">
+        <div style="width:40px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))"></div>
+        <span style="color:var(--gold);font-size:0.8rem">&#9829;</span>
+        <div style="width:40px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)"></div>
+      </div>
+
+      <!-- "Si deseas hacernos llegar tu obsequio" label -->
+      <p style="font-family:'Lato',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#5A8A3A;text-align:center;opacity:0;animation:textIn 0.5s ease 0.65s forwards;">
+        Si deseas hacernos llegar<br>tu obsequio:
+      </p>
+
+      <!-- Bank card -->
+      <div style="background:rgba(255,255,255,0.75);border:1.5px solid rgba(90,138,58,0.25);border-radius:14px;padding:1rem 1.2rem;width:100%;max-width:320px;display:flex;gap:0.9rem;align-items:flex-start;opacity:0;animation:textIn 0.7s ease 0.8s forwards;text-align:left;">
+        <!-- Bank icon -->
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style="flex-shrink:0;margin-top:2px">
+          <rect x="2" y="14" width="28" height="3" rx="1" fill="#5A8A3A" opacity="0.7"/>
+          <rect x="1" y="28" width="30" height="3" rx="1" fill="#5A8A3A" opacity="0.7"/>
+          <rect x="1" y="11" width="30" height="3" rx="1" fill="#5A8A3A" opacity="0.9"/>
+          <rect x="4"  y="17" width="4" height="11" rx="1" fill="#5A8A3A" opacity="0.6"/>
+          <rect x="10" y="17" width="4" height="11" rx="1" fill="#5A8A3A" opacity="0.6"/>
+          <rect x="18" y="17" width="4" height="11" rx="1" fill="#5A8A3A" opacity="0.6"/>
+          <rect x="24" y="17" width="4" height="11" rx="1" fill="#5A8A3A" opacity="0.6"/>
+          <path d="M2,11 L16,2 L30,11Z" fill="#5A8A3A" opacity="0.8"/>
+        </svg>
+        <div style="font-family:'Lato',sans-serif;font-size:clamp(0.78rem,2vw,0.88rem);color:#3A3A3A;line-height:1.9;">
+          <span style="display:block"><b>Banco:</b> Pichincha</span>
+          <span style="display:block"><b>Tipo de cuenta:</b> Ahorros</span>
+          <span style="display:block"><b>Titular:</b> Gustavo Wladimir Moyano Mejia</span>
+          <span style="display:block"><b>N&#250;mero de cuenta:</b> 2201830300</span>
+        </div>
+      </div>
+
+      <!-- Gold heart divider 2 -->
+      <div style="opacity:0;animation:textIn 0.5s ease 0.95s forwards;display:flex;align-items:center;gap:0.5rem;">
+        <div style="width:30px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))"></div>
+        <span style="color:var(--gold);font-size:0.7rem">&#9829;</span>
+        <div style="width:30px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)"></div>
+      </div>
+
+      <!-- Closing script -->
+      <div style="font-family:'Great Vibes',cursive;font-size:clamp(1.3rem,4vw,1.7rem);color:#5C3D1A;line-height:1.4;text-align:center;opacity:0;animation:textIn 0.7s ease 1.1s forwards;max-width:300px;">
+        &#161;Gracias por ser parte de este momento tan especial!
+      </div>
+
     </div>
   </div>
 
@@ -796,7 +875,7 @@ function submitRSVP(){
     ?`¡Hola! Soy ${name} y confirmo mi asistencia al Baby Shower de Maximiliano 🦁 Venimos ${rsvpGuests} persona(s). ¡Nos vemos el 13 de junio!`
     :`¡Hola! Soy ${name}. Lamentablemente no podré asistir al Baby Shower de Maximiliano 🦁 ¡Les mando un abrazo!`;
   // 👇 Reemplaza con el número de WhatsApp de Samy o Wlad (código de país + número, ej: 593987654321)
-  const phone='593959819007';
+  const phone='0000000000';
   const url=`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
   document.getElementById('rsvp-form').style.display='none';
   document.getElementById('rsvp-thanks').style.display='block';
